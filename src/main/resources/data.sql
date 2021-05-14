@@ -29,3 +29,4 @@ INSERT INTO INVENTORY (store_id, product_id, amount) values (3,2,100);
 INSERT INTO INVENTORY (store_id, product_id, amount) values (3,3,200);
 INSERT INTO INVENTORY (store_id, product_id, amount) values (4,3,500);
 INSERT INTO INVENTORY (store_id, product_id, amount) values (4,4,500);
+
