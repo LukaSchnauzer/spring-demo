@@ -1,19 +1,8 @@
-package com.accenture.springacademy.entity;
+package com.accenture.springacademy.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "STORE")
-public class StoreEntity {
-
-    @Id
+public class StoreDto {
     private String storeId;
-    @Column
     private String name;
-    @Column
     private String city;
 
     public String getStoreId() {
@@ -42,7 +31,7 @@ public class StoreEntity {
 
     @Override
     public String toString() {
-        return "StoreEntity{" +
+        return "StoreDto{" +
                 "storeId='" + storeId + '\'' +
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +

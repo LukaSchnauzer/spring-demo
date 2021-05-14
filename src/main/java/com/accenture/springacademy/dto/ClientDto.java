@@ -1,29 +1,16 @@
-package com.accenture.springacademy.entity;
+package com.accenture.springacademy.dto;
 
-import javax.persistence.*;
+import com.accenture.springacademy.entity.ProductEntity;
+
 import java.util.List;
 
-@Entity
-@Table(name = "CLIENT")
-public class ClientEntity {
+public class ClientDto {
 
-    @Id
     private String clientId;
-    @Column
     private String firstName;
-    @Column
     private String lastName;
-    @Column
     private String email;
-
-    /*@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "PRODUCTORDER",
-            joinColumns = @JoinColumn(name = "clientId"),
-            inverseJoinColumns = @JoinColumn(name = "productId"))
-    private List<ProductEntity> productList;*/
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
-    private List<ProductOrderEntity> orders;
+    private List<ProductDto> productList;
 
     public String getClientId() {
         return clientId;
@@ -57,30 +44,22 @@ public class ClientEntity {
         this.email = email;
     }
 
-   /* public List<ProductEntity> getProductList() {
+    public List<ProductDto> getProductList() {
         return productList;
     }
 
-    public void setProductList(List<ProductEntity> productList) {
+    public void setProductList(List<ProductDto> productList) {
         this.productList = productList;
-    }*/
-
-    public List<ProductOrderEntity> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<ProductOrderEntity> orders) {
-        this.orders = orders;
     }
 
     @Override
     public String toString() {
-        return "ClientEntity{" +
+        return "ClientDto{" +
                 "clientId='" + clientId + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                /*", productList=" + productList +*/
+                ", productList=" + productList +
                 '}';
     }
 }

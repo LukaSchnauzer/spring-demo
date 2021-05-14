@@ -1,6 +1,9 @@
 package com.accenture.springacademy.services;
 
+import com.accenture.springacademy.entity.ProductEntity;
 import com.accenture.springacademy.model.Product;
+import com.accenture.springacademy.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +23,9 @@ public class ProductService {
     @Value("${com.accenture.product.cost}")
     private Float productCost;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @PostConstruct
     public void init(){
         Product a = new Product("Chocomilk",20f);
@@ -32,18 +38,11 @@ public class ProductService {
         productList.add(d);
     }
 
-    public List<Product> getAllProducts(){
-        return productList;
+    public List<ProductEntity> getAllProducts(){
+        return productRepository.findAll();
     }
 
-    public Product getProduct(String name){
-        List<Product> products = productList.stream().filter(item -> {
-            if(item.getName().equals(name)){
-                return true;
-            }
-            return false;
-        }).collect(Collectors.toList());
-
-        return products.get(0);
+    public ProductEntity getProduct(String name){
+        return productRepository.findProductByName(name);
     }
 }

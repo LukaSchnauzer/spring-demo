@@ -1,23 +1,14 @@
-package com.accenture.springacademy.entity;
+package com.accenture.springacademy.dto;
 
-import javax.persistence.*;
+import com.accenture.springacademy.entity.ClientEntity;
+
 import java.util.List;
 
-@Entity
-@Table(name = "PRODUCT")
-public class ProductEntity {
-
-    @Id
+public class ProductDto {
     private String productId;
-    @Column
     private String name;
-    @Column
     private Float cost;
-   /* @ManyToMany(fetch = FetchType.LAZY,
-            mappedBy = "productList")
-    private List<ClientEntity> clientEntities;*/
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-    private List<ProductOrderEntity> orders;
+    private List<ClientEntity> clientEntities;
 
     public String getProductId() {
         return productId;
@@ -43,20 +34,21 @@ public class ProductEntity {
         this.cost = cost;
     }
 
-    public List<ProductOrderEntity> getOrders() {
-        return orders;
+    public List<ClientEntity> getClientEntities() {
+        return clientEntities;
     }
 
-    public void setOrders(List<ProductOrderEntity> orders) {
-        this.orders = orders;
+    public void setClientEntities(List<ClientEntity> clientEntities) {
+        this.clientEntities = clientEntities;
     }
 
     @Override
     public String toString() {
-        return "ProductEntity{" +
+        return "ProductDto{" +
                 "productId='" + productId + '\'' +
                 ", name='" + name + '\'' +
                 ", cost=" + cost +
+                ", clientEntities=" + clientEntities +
                 '}';
     }
 }
