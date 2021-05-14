@@ -1,12 +1,16 @@
-package com.accenture.springacademy.model;
+package com.accenture.springacademy.entity;
 
-public class Product {
+public class ProductEntity {
+    private String productId;
     private String name;
     private Float cost;
 
-    public Product(String name, Float cost) {
-        this.name = name;
-        this.cost = cost;
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -27,8 +31,9 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
+        return "ProductEntity{" +
+                "productId='" + productId + '\'' +
+                ", name='" + name + '\'' +
                 ", cost=" + cost +
                 '}';
     }
