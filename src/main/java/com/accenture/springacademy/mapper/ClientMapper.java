@@ -8,7 +8,7 @@ import com.accenture.springacademy.entity.ProductEntity;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StoreMapper {
+public class ClientMapper {
 
     public static final ClientDto mapClientFromEntitytoDto(ClientEntity entity){
         ClientDto clientDto = new ClientDto();
@@ -16,7 +16,6 @@ public class StoreMapper {
         clientDto.setEmail(entity.getEmail());
         clientDto.setFirstName(entity.getFirstName());
         clientDto.setLastName(entity.getLastName());
-        //clientDto.setProductList(mapListOfProductFromClientToDto(entity.getProductList()));
 
         return clientDto;
     }
@@ -30,26 +29,9 @@ public class StoreMapper {
         return entity;
     }
 
-    public static final List<ClientDto> mapListOfClientFromClientToDto(List<ClientEntity> entityList){
-        List<ClientDto> dtoList = entityList.stream().map( entity -> {
+    public static final List<ClientDto> mapListOfClientFromClientToDto(List<ClientEntity> entityList) {
+        List<ClientDto> dtoList = entityList.stream().map(entity -> {
             return mapClientFromEntitytoDto(entity);
-        }).collect(Collectors.toList());
-
-        return dtoList;
-    }
-
-    public static final ProductDto mapProductFromEntityToDto(ProductEntity entity){
-        ProductDto productDto = new ProductDto();
-        productDto.setProductId(entity.getProductId());
-        productDto.setCost(entity.getCost());
-        productDto.setName(entity.getName());
-        productDto.setClientEntities(null);
-        return productDto;
-    }
-
-    public static final List<ProductDto> mapListOfProductFromClientToDto(List<ProductEntity> entityList){
-        List<ProductDto> dtoList = entityList.stream().map( entity -> {
-            return mapProductFromEntityToDto(entity);
         }).collect(Collectors.toList());
 
         return dtoList;

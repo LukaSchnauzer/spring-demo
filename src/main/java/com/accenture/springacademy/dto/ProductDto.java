@@ -7,6 +7,7 @@ import java.util.List;
 public class ProductDto {
     private String productId;
     private String name;
+    private String category;
     private Float cost;
     private List<ClientEntity> clientEntities;
 
@@ -40,6 +41,14 @@ public class ProductDto {
 
     public void setClientEntities(List<ClientEntity> clientEntities) {
         this.clientEntities = clientEntities;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override

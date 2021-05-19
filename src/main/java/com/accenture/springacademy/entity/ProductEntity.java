@@ -8,9 +8,12 @@ import java.util.List;
 public class ProductEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String productId;
     @Column
     private String name;
+    @Column
+    private String category;
     @Column
     private Float cost;
    /* @ManyToMany(fetch = FetchType.LAZY,
@@ -49,6 +52,14 @@ public class ProductEntity {
 
     public void setOrders(List<ProductOrderEntity> orders) {
         this.orders = orders;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override

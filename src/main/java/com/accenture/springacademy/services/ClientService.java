@@ -2,7 +2,7 @@ package com.accenture.springacademy.services;
 
 import com.accenture.springacademy.dto.ClientDto;
 import com.accenture.springacademy.entity.ClientEntity;
-import com.accenture.springacademy.mapper.StoreMapper;
+import com.accenture.springacademy.mapper.ClientMapper;
 import com.accenture.springacademy.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,14 +18,14 @@ public class ClientService {
 
     public List<ClientDto> getAllClients(){
         List<ClientEntity> clientEntities = clientRepository.findAll();
-        List<ClientDto> clients = StoreMapper.mapListOfClientFromClientToDto(clientEntities);
+        List<ClientDto> clients = ClientMapper.mapListOfClientFromClientToDto(clientEntities);
         return clients;
     }
 
     public ClientDto getById(String id){
         Optional<ClientEntity> clientEntity = clientRepository.findById(id);
         if(clientEntity.isPresent()){
-            ClientDto clientDto = StoreMapper.mapClientFromEntitytoDto(clientEntity.get());
+            ClientDto clientDto = ClientMapper.mapClientFromEntitytoDto(clientEntity.get());
             return clientDto;
         }
 
@@ -34,13 +34,13 @@ public class ClientService {
 
     public ClientDto getByName(String firstName){
         ClientEntity clientEntity = clientRepository.findClientByFirstName(firstName);
-        ClientDto clientDto = StoreMapper.mapClientFromEntitytoDto(clientEntity);
+        ClientDto clientDto = ClientMapper.mapClientFromEntitytoDto(clientEntity);
         return clientDto;
     }
 
     public void createClient(ClientDto clientDto){
         if(validateClientDto(clientDto)){
-            ClientEntity clientEntity = StoreMapper.mapClientFromDtoToEntity(clientDto);
+            ClientEntity clientEntity = ClientMapper.mapClientFromDtoToEntity(clientDto);
             clientRepository.save(clientEntity);
         }
     }

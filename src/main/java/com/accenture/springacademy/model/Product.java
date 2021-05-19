@@ -1,5 +1,8 @@
 package com.accenture.springacademy.model;
 
+/*
+* not used (Done as a first example)
+ */
 public class Product {
     private String name;
     private Float cost;

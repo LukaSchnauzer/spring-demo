@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Store Demo</title>
+</head>
+<body>
+  <div class="container my-5">
+    <h2 class="mb-5">New Product</h2>
+
+    <div class="row">
+      <div class="col-md-6">
+        <form action="#" th:action="@{/add}" th:object="${product}" method="post">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="name" class="col-form-label">Name</label>
+              <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="cost" class="col-form-label">Cost</label>
+              <input type="text" th:field="*{cost}" class="form-control" id="cost" placeholder="Cost">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mt-5">
+              <input type="submit" class="btn btn-primary" value="Add Product">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
